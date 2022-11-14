@@ -73,30 +73,23 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
     });
   }
 
-  Widget buildButton(
-      String buttonText, double buttonHeight, Color buttonColor) {
-    return Padding(
-      padding: const EdgeInsets.all(2),
-      child: Container(
-        alignment: Alignment.center,
-        width: MediaQuery.of(context).size.height * 0.2 * buttonHeight,
-        height: MediaQuery.of(context).size.height * 0.1 * buttonHeight,
-        padding: EdgeInsets.all(8),
-        child: NeumorphicButton(
-            style: NeumorphicStyle(
-                color: buttonColor,
-                boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-                shape: NeumorphicShape.flat),
-            onPressed: () => buttonPressed(buttonText),
-            child: Text(
-              buttonText,
-              style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.normal,
-                  color: Color(0xff728AB7)),
-            )),
-      ),
+  Widget buildButton(String buttonText, double buttonHeight, Color buttonColor,
+      Color textcolor) {
+    return Container(
+      alignment: Alignment.center,
+      child: TextButton(
+          style: TextButton.styleFrom(
+              minimumSize: Size(62, 60),
+              backgroundColor: buttonColor,
+              shape: CircleBorder()),
+          onPressed: () => buttonPressed(buttonText),
+          child: Text(
+            buttonText,
+            style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.normal,
+                color: textcolor),
+          )),
     );
   }
 
@@ -111,7 +104,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           ),
           Container(
             alignment: Alignment.centerRight,
-            padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
             child: Text(
               equation,
               style: TextStyle(fontSize: equationFontSize, color: Colors.white),
@@ -125,34 +117,39 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               style: TextStyle(fontSize: resultFontSize, color: Colors.white),
             ),
           ),
+          Spacer(),
           Expanded(
-            child: GridView(
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
+            flex: 7,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 28),
+              child: GridView(
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                ),
+                children: [
+                  buildButton("C", 1, Color(0xffD4D4D2), Color(0xff1C1C1C)),
+                  buildButton("⌫", 1, Color(0xffD4D4D2), Color(0xff1C1C1C)),
+                  buildButton("%", 1, Color(0xffD4D4D2), Color(0xff1C1C1C)),
+                  buildButton("÷", 1, Color(0xffFF9500), Color(0xffD4D4D2)),
+                  buildButton("7", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("8", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("9", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("×", 1, Color(0xffFF9500), Color(0xffD4D4D2)),
+                  buildButton("4", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("5", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("6", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("-", 1, Color(0xffFF9500), Color(0xffD4D4D2)),
+                  buildButton("1", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("2", 1, Color(0xffF505050), Color(0xffD4D4D2)),
+                  buildButton("3", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("+", 1, Color(0xffFF9500), Color(0xffD4D4D2)),
+                  buildButton("0", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("00", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton(".", 1, Color(0xff505050), Color(0xffD4D4D2)),
+                  buildButton("=", 1, Color(0xffFF9500), Color(0xffD4D4D2)),
+                ],
               ),
-              children: [
-                buildButton("C", 1, Color(0xffD4D4D2)),
-                buildButton("⌫", 1, Color(0xffD4D4D2)),
-                buildButton("%", 1, Color(0xffD4D4D2)),
-                buildButton("7", 1, Color(0xff505050)),
-                buildButton("8", 1, Color(0xff505050)),
-                buildButton("9", 1, Color(0xff505050)),
-                buildButton("4", 1, Color(0xff505050)),
-                buildButton("5", 1, Color(0xff505050)),
-                buildButton("6", 1, Color(0xff505050)),
-                buildButton("1", 1, Color(0xff505050)),
-                buildButton("2", 1, Color(0xffF505050)),
-                buildButton("3", 1, Color(0xff505050)),
-                buildButton(".", 1, Color(0xff505050)),
-                buildButton("0", 1, Color(0xff505050)),
-                buildButton("00", 1, Color(0xff505050)),
-                buildButton("÷", 1, Color(0xffFF9500)),
-                buildButton("×", 1, Color(0xffFF9500)),
-                buildButton("-", 1, Color(0xffFF9500)),
-                buildButton("+", 1, Color(0xffFF9500)),
-                buildButton("=", 1, Color(0xffFF9500)),
-              ],
             ),
           ),
         ],
