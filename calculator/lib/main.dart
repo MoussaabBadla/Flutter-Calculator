@@ -81,7 +81,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           style: TextButton.styleFrom(
               minimumSize: Size(62, 60),
               backgroundColor: buttonColor,
-              shape: CircleBorder()),
+              shape: const  CircleBorder()),
           onPressed: () => buttonPressed(buttonText),
           child: Text(
             buttonText,
@@ -121,7 +121,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           Expanded(
             flex: 7,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 28),
+              padding: EdgeInsets.symmetric(horizontal: 24),
               child: GridView(
                 physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -129,8 +129,8 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
                 ),
                 children: [
                   buildButton("C", 1, Color(0xffD4D4D2), Color(0xff1C1C1C)),
-                  buildButton("⌫", 1, Color(0xffD4D4D2), Color(0xff1C1C1C)),
                   buildButton("%", 1, Color(0xffD4D4D2), Color(0xff1C1C1C)),
+                  buildButton("⌫", 1, Color(0xffD4D4D2), Color(0xff1C1C1C)),
                   buildButton("÷", 1, Color(0xffFF9500), Color(0xffD4D4D2)),
                   buildButton("7", 1, Color(0xff505050), Color(0xffD4D4D2)),
                   buildButton("8", 1, Color(0xff505050), Color(0xffD4D4D2)),
